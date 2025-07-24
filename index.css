@@ -57,7 +57,7 @@ ul a:hover {
     display: block;
     transform: translateY(200%);
     transition: all 1s ease;
-    background-image: url("/imgs/back-to-top.svg");
+    background-image: url("./imgs/back-to-top.svg");
     background-size: cover;
     background-position: center;
     width: 40px;
@@ -85,7 +85,7 @@ ul a:hover {
     margin: 0;
     background-image: 
         linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 80%, rgba(0, 0, 0, 1) 100%), 
-        url("/imgs/abstract-black-background-dynamic-black-landing-page_249611-4935.avif");
+        url("./imgs/abstract-black-background-dynamic-black-landing-page_249611-4935.avif");
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -168,15 +168,15 @@ ul a:hover {
 }
 
 #github {
-    background-image: url("/imgs/github.svg");
+    background-image: url("./imgs/github.svg");
 }
 
 #linkedin {
-    background-image: url("/imgs/linkedin.svg");
+    background-image: url("./imgs/linkedin.svg");
 }
 
 #strava {
-    background-image: url("/imgs/strava-icon.svg");
+    background-image: url("./imgs/strava-icon.svg");
 }
 
 #projects {
