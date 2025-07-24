@@ -9,12 +9,15 @@ body {
 
 nav {
     padding-block: 10px;
-    position: absolute;
+    position: fixed;
+    z-index: 1000;
     display: flex;
-    justify-content: left;
+    justify-content: space-between;
     align-items: center;
     flex-direction: row;
-    width: 100%;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgb(24, 24, 24) 80%, rgb(44, 44, 44) 100%);
+    border-bottom: #fff 1px solid;
+    width: 100vw;
 }
 
 ul {
@@ -25,21 +28,18 @@ ul {
     flex-direction: row;
 }
 
-li {
+ul a {
     margin: 0 10px;
     padding: 5px 10px;
     border-radius: 5px;
     background-color: #f0f0f0;
-    transition: all 1s ease;
-}
-
-li a {
+    transition: all 0.5s ease;
     text-decoration: none;
     color: #333;
     font-weight: bold;
 }
 
-li:hover {
+ul a:hover {
     color: #fff;
     background-color: #525252;
     transform: scale(1.1);
@@ -48,8 +48,8 @@ li:hover {
 
 #topButton {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 15px;
+    right: 15px;
     background-color: #333;
     border: none;
     border-radius: 5px;
@@ -62,6 +62,8 @@ li:hover {
     background-position: center;
     width: 40px;
     height: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
 }
 
 #topButton:hover {
@@ -183,7 +185,8 @@ li:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: black;
+    background-image: linear-gradient(rgb(16, 16, 16) 0%, rgb(0, 0, 0) 10%, rgb(0, 0, 0) 90%, rgb(16, 16, 16) 100%);
+    border-block: #fff 1px solid;
 }
 
 #projects h2 {
@@ -203,12 +206,40 @@ li:hover {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+}
+
+.enterLeft {
+    transform: translateX(-25%);
+    margin-right: 35%;
+}
+
+.enterRight {
+    transform: translateX(25%);
+    margin-left: 35%;
+}
+
+@media (max-width: 970px) {
+    .enterLeft {
+        margin-right: 0;
+    }
+
+    .enterRight {
+        margin-left: 0;
+    }
+}
+
+.enterLeft.loaded, .enterRight.loaded {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 0.5s ease-in-out;
 }
 
 .description {
     flex: 1;
-    margin-right: 20px;
 }
 
 .project h3 {
@@ -222,9 +253,15 @@ li:hover {
 }
 
 .project img {
-    max-width: 100%;
+    width: 150px;
     border-radius: 5px;
-    margin: 20px;
+    margin-inline: 10px;
+}
+
+.project:hover {
+    background-color: #444;
+    cursor: pointer;
+    transform: scale(1.05);
 }
 
 #aboutMe {
@@ -233,6 +270,7 @@ li:hover {
     align-items: center;
     justify-content: center;
     background-color: black;
+    padding: 20px 20px 40px 20px;
 }
 
 #aboutMe h2 {
