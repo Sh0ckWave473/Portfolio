@@ -191,6 +191,7 @@ ul a:hover {
     justify-content: center;
     background-image: linear-gradient(rgb(16, 16, 16) 0%, rgb(0, 0, 0) 10%, rgb(0, 0, 0) 90%, rgb(16, 16, 16) 100%);
     border-block: #fff 1px solid;
+    overflow-x: hidden;
 }
 
 #projects h2 {
