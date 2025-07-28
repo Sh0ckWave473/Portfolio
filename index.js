@@ -18,6 +18,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    topButton.addEventListener("click", function () {
+        topButton.classList.remove("visible");
+    });
+
     document.getElementById("habitizer").addEventListener("click", function () {
         window.open("https://github.com/CSE-110-Winter-2025/habitizer-team-11");
     });
@@ -39,6 +43,7 @@ document.addEventListener("scroll", function () {
     const habitizer = document.getElementById("habitizer");
     const pacePartner = document.getElementById("pacePartner");
     const minesweeper = document.getElementById("minesweeper");
+    const aboutMe = document.getElementById("aboutMe");
 
     const habitizerRect = habitizer.getBoundingClientRect();
     if (habitizerRect.top < window.innerHeight && habitizerRect.bottom >= 0) {
@@ -59,5 +64,41 @@ document.addEventListener("scroll", function () {
         minesweeperRect.bottom >= 0
     ) {
         minesweeper.classList.add("loaded");
+    }
+    const aboutMeRect = aboutMe.getBoundingClientRect();
+    if (aboutMeRect.top < window.innerHeight && aboutMeRect.bottom >= 0) {
+        aboutMe.classList.add("loaded");
+    }
+
+    const scrollBall = document.getElementById("scrollBall");
+    const scrollBar = document.getElementById("scrollBar");
+    const navbarOffset = document.getElementById("navbar").offsetHeight + 20;
+
+    const scrollTop =
+        (document.documentElement.scrollTop || document.body.scrollTop) +
+        navbarOffset;
+
+    const barTop = scrollBar.getBoundingClientRect().top + window.scrollY;
+    const barHeight = scrollBar.offsetHeight;
+    const ballHeight = scrollBall.offsetHeight;
+
+    const scrollRange = barHeight - ballHeight;
+
+    const sectionStart = barTop;
+    const sectionEnd = barTop + barHeight - window.innerHeight;
+
+    if (scrollTop >= sectionStart && scrollTop <= sectionEnd) {
+        const relativeScroll = scrollTop - sectionStart;
+        const maxScroll = sectionEnd - sectionStart;
+
+        const scrollPercentage = relativeScroll / maxScroll;
+        console.log(`Scroll Percentage: ${scrollPercentage}`);
+        const ballPosition = scrollPercentage * scrollRange;
+
+        scrollBall.style.top = `${ballPosition}px`;
+    } else if (scrollTop < sectionStart) {
+        scrollBall.style.top = "0px";
+    } else {
+        scrollBall.style.top = `${scrollRange}px`;
     }
 });
