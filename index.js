@@ -69,36 +69,4 @@ document.addEventListener("scroll", function () {
     if (aboutMeRect.top < window.innerHeight && aboutMeRect.bottom >= 0) {
         aboutMe.classList.add("loaded");
     }
-
-    const scrollBall = document.getElementById("scrollBall");
-    const scrollBar = document.getElementById("scrollBar");
-    const navbarOffset = document.getElementById("navbar").offsetHeight + 20;
-
-    const scrollTop =
-        (document.documentElement.scrollTop || document.body.scrollTop) +
-        navbarOffset;
-
-    const barTop = scrollBar.getBoundingClientRect().top + window.scrollY;
-    const barHeight = scrollBar.offsetHeight;
-    const ballHeight = scrollBall.offsetHeight;
-
-    const scrollRange = barHeight - ballHeight;
-
-    const sectionStart = barTop;
-    const sectionEnd = barTop + barHeight - window.innerHeight;
-
-    if (scrollTop >= sectionStart && scrollTop <= sectionEnd) {
-        const relativeScroll = scrollTop - sectionStart;
-        const maxScroll = sectionEnd - sectionStart;
-
-        const scrollPercentage = relativeScroll / maxScroll;
-        console.log(`Scroll Percentage: ${scrollPercentage}`);
-        const ballPosition = scrollPercentage * scrollRange;
-
-        scrollBall.style.top = `${ballPosition}px`;
-    } else if (scrollTop < sectionStart) {
-        scrollBall.style.top = "0px";
-    } else {
-        scrollBall.style.top = `${scrollRange}px`;
-    }
 });
